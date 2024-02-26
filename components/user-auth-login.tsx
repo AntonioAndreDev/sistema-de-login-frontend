@@ -13,14 +13,12 @@ interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 interface IUser {
     email: string;
     password: string;
-    domain: string;
 }
 
 export default function UserAuthLogin({ className, ...props }: UserAuthFormProps) {
     const [formData, setFormData] = useState<IUser>({
         email: "",
         password: "",
-        domain: "",
     });
 
     const searchParams = useSearchParams();

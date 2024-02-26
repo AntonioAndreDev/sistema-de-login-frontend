@@ -19,7 +19,7 @@ export const auth: NextAuthOptions = {
             },
             async authorize(credentials, req) {
                 try {
-                    console.log("credentials", credentials);
+                    // console.log("credentials", credentials);
 
                     const response = await fetch("http://localhost:3333/login", {
                         method: "POST",
@@ -33,16 +33,14 @@ export const auth: NextAuthOptions = {
                         throw new Error("Erro ao fazer login");
                     }
 
-                    const { user, token } = await response.json();
-                    console.log(user, token);
+                    const user = await response.json();
+                    console.log(user);
 
                     let authorizedUser = {
-                        id: user.id,
-                        name: user.name,
-                        email: user.email,
-                        domain: user.domain,
-                        image: user.image,
-                        token: token,
+                        id: user.userExists.id,
+                        name: user.userExists.name,
+                        password: user.userExists.password,
+                        email: user.userExists.email,
                     };
 
                     console.log("authorizedUser", authorizedUser);
@@ -59,21 +57,6 @@ export const auth: NextAuthOptions = {
         jwt({ token, user }) {
             console.log("token", token);
 
-            let domain: string;
-
-            if (user) {
-                domain = user.domain || "default";
-                if (domain === "ADMINAAD") {
-                    token.role = "admin";
-                    token.domain = domain;
-                    token.token = user.token;
-                } else {
-                    token.role = "default";
-                    token.domain = domain;
-                    token.token = user.token;
-                }
-            }
-
             return token;
         },
         session({ token, session }) {
@@ -82,8 +65,6 @@ export const auth: NextAuthOptions = {
             // console.log("session", session);
             // console.log("session(params) - end call");
 
-            session.user.role = token.role;
-            session.user.domain = token.domain;
             session.user.token = token.token;
 
             return session;
