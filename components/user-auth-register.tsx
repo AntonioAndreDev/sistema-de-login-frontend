@@ -36,6 +36,17 @@ export default function UserAuthRegister({ className, ...props }: UserAuthFormPr
         event.preventDefault();
         setIsLoading(true);
 
+        // Validate form data
+        if (!formData.email || !formData.name || !formData.password) {
+            setIsLoading(false);
+            toast({
+                title: "Preencha todos os campos!",
+                variant: "destructive",
+                description: "Preencha todos os campos para continuar.",
+            });
+            return;
+        }
+
         const res = await fetch("api/users", {
             method: "POST",
             body: JSON.stringify(formData),
