@@ -6,11 +6,11 @@ import { Button } from "@/components/ui/button";
 import { signIn } from "next-auth/react";
 import { useSearchParams } from "next/navigation";
 import { Loader2 } from "lucide-react";
-import { useRouter } from "next/navigation";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "./ui/input";
 import Link from "next/link";
+import { Separator } from "./ui/separator";
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -24,8 +24,6 @@ export default function UserAuthLogin({ className, ...props }: UserAuthFormProps
         email: "",
         password: "",
     });
-
-    const router = useRouter();
 
     const searchParams = useSearchParams();
     const search = searchParams.get("error");
@@ -61,10 +59,14 @@ export default function UserAuthLogin({ className, ...props }: UserAuthFormProps
                     <TabsContent value="login">
                         <Card>
                             <CardHeader>
+                                <Button variant={"secondary"} asChild>
+                                    <Link href={"/register"}>Criar uma conta</Link>
+                                </Button>
+                            </CardHeader>
+                            <Separator />
+                            <CardHeader>
                                 <CardTitle>Entrar na Conta</CardTitle>
-                                <CardDescription>
-                                    Se você ainda não possui uma conta, crie uma preenchendo as informações abaixo.
-                                </CardDescription>
+                                <CardDescription>Entre na sua conta agora mesmo.</CardDescription>
                             </CardHeader>
                             <CardContent className="space-y-2">
                                 <div className="space-y-1">
