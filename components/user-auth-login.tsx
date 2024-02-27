@@ -11,6 +11,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "./ui/input";
 import Link from "next/link";
+import { Separator } from "./ui/separator";
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -61,10 +62,14 @@ export default function UserAuthLogin({ className, ...props }: UserAuthFormProps
                     <TabsContent value="login">
                         <Card>
                             <CardHeader>
+                                <Button variant={"secondary"} asChild>
+                                    <Link href={"/register"}>Criar uma conta</Link>
+                                </Button>
+                            </CardHeader>
+                            <Separator />
+                            <CardHeader>
                                 <CardTitle>Entrar na Conta</CardTitle>
-                                <CardDescription>
-                                    Se você ainda não possui uma conta, crie uma preenchendo as informações abaixo.
-                                </CardDescription>
+                                <CardDescription>Entre na sua conta agora mesmo.</CardDescription>
                             </CardHeader>
                             <CardContent className="space-y-2">
                                 <div className="space-y-1">
