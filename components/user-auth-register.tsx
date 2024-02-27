@@ -9,6 +9,8 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Separator } from "./ui/separator";
+import Link from "next/link";
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -106,6 +108,12 @@ export default function UserAuthRegister({ className, ...props }: UserAuthFormPr
                     </TabsList>
                     <TabsContent value="register">
                         <Card>
+                            <CardHeader>
+                                <Button variant={"secondary"} asChild>
+                                    <Link href={"/login"}>Já tenho uma conta</Link>
+                                </Button>
+                            </CardHeader>
+                            <Separator />
                             <CardHeader>
                                 <CardTitle>Criar Conta</CardTitle>
                                 <CardDescription>
