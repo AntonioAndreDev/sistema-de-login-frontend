@@ -46,7 +46,7 @@ const NavBar = async () => {
                             <LogOut className="w-10 h-10" color="red" /> Sair
                         </Link>
                     ) : (
-                        <Link href={`/api/auth/signin?callbackUrl=/`}>
+                        <Link href={`/login`}>
                             <LogIn className="w-10 h-10" color="green" /> Entrar
                         </Link>
                     )}

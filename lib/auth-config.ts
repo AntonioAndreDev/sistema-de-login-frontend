@@ -1,4 +1,4 @@
-import { NextAuthOptions, User } from "next-auth";
+import { NextAuthOptions } from "next-auth";
 
 import GithubProvider from "next-auth/providers/github";
 import CredentialsProvider from "next-auth/providers/credentials";
@@ -15,12 +15,9 @@ export const auth: NextAuthOptions = {
             credentials: {
                 email: { label: "email", type: "email", placeholder: "Giuliana" },
                 password: { label: "Password", type: "password" },
-                // domain: { label: "Domain", type: "text", placeholder: "ADMINAAD", value: "ADMINAAD" },
             },
             async authorize(credentials, req) {
                 try {
-                    // console.log("credentials", credentials);
-
                     const response = await fetch("http://localhost:3333/login", {
                         method: "POST",
                         headers: {
@@ -34,7 +31,6 @@ export const auth: NextAuthOptions = {
                     }
 
                     const user = await response.json();
-                    console.log(user);
 
                     let authorizedUser = {
                         id: user.userExists.id,
@@ -42,8 +38,6 @@ export const auth: NextAuthOptions = {
                         password: user.userExists.password,
                         email: user.userExists.email,
                     };
-
-                    console.log("authorizedUser", authorizedUser);
 
                     return authorizedUser;
                 } catch (error) {
@@ -60,11 +54,6 @@ export const auth: NextAuthOptions = {
             return token;
         },
         session({ token, session }) {
-            // console.log("session(params) - start call");
-            // console.log("token", token);
-            // console.log("session", session);
-            // console.log("session(params) - end call");
-
             session.user.token = token.token;
 
             return session;

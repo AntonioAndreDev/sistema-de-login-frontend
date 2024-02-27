@@ -10,12 +10,6 @@ declare module "next-auth" {
             token?: string | undefined;
         };
     }
-    interface User {
-        token?: string | undefined;
-        name?: string | undefined;
-        email?: string | undefined;
-        image?: string | undefined;
-    }
 }
 
 declare module "next-auth/jwt" {
