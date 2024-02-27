@@ -16,11 +16,9 @@ const NavBar = async () => {
             )}
             <div className="flex gap-4 items-baseline">
                 <Button variant={"default"} size={"lg"} className="font-semibold text-xl" asChild>
-                    <Link href={`/login`}>Fazer login</Link>
+                    <Link href={`/login`}>Login</Link>
                 </Button>
-                <Button variant={"secondary"} size={"default"} className="font-medium text-xl" asChild>
-                    <Link href={`/register`}>Criar conta</Link>
-                </Button>
+
                 <ToggleTheme />
             </div>
         </header>
