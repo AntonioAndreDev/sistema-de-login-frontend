@@ -6,7 +6,7 @@ export default async function Home() {
     // console.log(session);
 
     return (
-        <div className="text-center text-6xl text-green-700">
+        <div className="text-center text-6xl">
             <span>Home</span>
             {session && <div className="text-base">{JSON.stringify(session, null, 2)}</div>}
         </div>
