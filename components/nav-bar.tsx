@@ -3,6 +3,7 @@ import { auth as authOptions } from "@/lib/auth-config";
 import { ToggleTheme } from "@/components/toggle-theme";
 import { Button } from "@/components/ui/button";
 import { ShieldAlert, ShieldCheck } from "lucide-react";
+import Link from "next/link";
 
 const NavBar = async () => {
     const session = await getServerSession(authOptions);
@@ -14,11 +15,11 @@ const NavBar = async () => {
                 <ShieldAlert className={`${!session && "text-red-500"}`} size={"32"} />
             )}
             <div className="flex gap-4 items-baseline">
-                <Button variant={"default"} size={"lg"} className="font-semibold text-xl">
-                    Fazer login
+                <Button variant={"default"} size={"lg"} className="font-semibold text-xl" asChild>
+                    <Link href={`/login`}>Fazer login</Link>
                 </Button>
-                <Button variant={"secondary"} size={"default"} className="font-medium text-xl">
-                    Criar conta
+                <Button variant={"secondary"} size={"default"} className="font-medium text-xl" asChild>
+                    <Link href={`/register`}>Criar conta</Link>
                 </Button>
                 <ToggleTheme />
             </div>
