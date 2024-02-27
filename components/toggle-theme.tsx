@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 export function ToggleTheme() {
     const { setTheme } = useTheme();
-    const [isDarkTheme, setIsDarkTheme] = React.useState<boolean>();
 
     return (
         <DropdownMenu>
@@ -23,7 +22,6 @@ export function ToggleTheme() {
                 <DropdownMenuItem
                     onClick={() => {
                         setTheme("light");
-                        setIsDarkTheme(false);
                     }}
                 >
                     Light
@@ -31,7 +29,6 @@ export function ToggleTheme() {
                 <DropdownMenuItem
                     onClick={() => {
                         setTheme("dark");
-                        setIsDarkTheme(true);
                     }}
                 >
                     Dark
