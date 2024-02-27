@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { signIn } from "next-auth/react";
 import { useSearchParams } from "next/navigation";
 import { Loader2 } from "lucide-react";
-import { useRouter } from "next/navigation";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "./ui/input";
@@ -25,8 +24,6 @@ export default function UserAuthLogin({ className, ...props }: UserAuthFormProps
         email: "",
         password: "",
     });
-
-    const router = useRouter();
 
     const searchParams = useSearchParams();
     const search = searchParams.get("error");
