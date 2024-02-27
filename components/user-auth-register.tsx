@@ -1,12 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
 import { Loader2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -96,64 +98,97 @@ export default function UserAuthRegister({ className, ...props }: UserAuthFormPr
     return (
         <div>
             <form onSubmit={onSubmit}>
-                <div className="grid gap-2">
-                    <div className="grid gap-1">
-                        <Label htmlFor="email" className="sr-only">
-                            Email
-                        </Label>
-                        <Input
-                            data-testid="email"
-                            id="email"
-                            name="email"
-                            placeholder="exemplo@gmail.com"
-                            type="text"
-                            autoCapitalize="none"
-                            autoComplete="none"
-                            autoCorrect="off"
-                            value={formData.email}
-                            onChange={handleFormChange}
-                        />
-                    </div>
-                    <div className="grid gap-1">
-                        <Label htmlFor="name" className="sr-only">
-                            User Name
-                        </Label>
-                        <Input
-                            disabled={isLoading}
-                            id="name"
-                            name="name"
-                            placeholder="Antônio André"
-                            type="text"
-                            autoCapitalize="none"
-                            autoComplete="none"
-                            autoCorrect="off"
-                            value={formData.name}
-                            onChange={handleFormChange}
-                        />
-                    </div>
-                    <div className="grid gap-1">
-                        <Label htmlFor="password" className="sr-only">
-                            Password
-                        </Label>
-                        <Input
-                            disabled={isLoading}
-                            id="password"
-                            name="password"
-                            placeholder="paSsw0rd!"
-                            type="password"
-                            autoCapitalize="none"
-                            autoComplete="none"
-                            autoCorrect="off"
-                            value={formData.password}
-                            onChange={handleFormChange}
-                        />
-                    </div>
-                    <Button disabled={isLoading}>
-                        {" "}
-                        {isLoading && <Loader2 className="animate-spin" />}
-                        {!isLoading && "Criar conta"}
-                    </Button>
-                </div>
+                <Tabs defaultValue="account" className="w-[400px]">
+                    <TabsList className="grid w-full grid-cols-2">
+                        <TabsTrigger value="account">Criar Conta</TabsTrigger>
+                        <TabsTrigger value="password">Password</TabsTrigger>
+                    </TabsList>
+                    <TabsContent value="account">
+                        <Card>
+                            <CardHeader>
+                                <CardTitle>Criar Conta</CardTitle>
+                                <CardDescription>
+                                    Se você ainda não possui uma conta, crie uma preenchendo as informações abaixo.
+                                </CardDescription>
+                            </CardHeader>
+                            <CardContent className="space-y-2">
+                                <div className="space-y-1">
+                                    <Label htmlFor="name">Nome</Label>
+                                    <Input
+                                        data-testid="name"
+                                        id="name"
+                                        name="name"
+                                        placeholder="Antônio André"
+                                        type="text"
+                                        autoCapitalize="none"
+                                        autoComplete="none"
+                                        autoCorrect="off"
+                                        value={formData.name}
+                                        onChange={handleFormChange}
+                                    />
+                                </div>
+                                <div className="space-y-1">
+                                    <Label htmlFor="email">Email</Label>
+                                    <Input
+                                        data-testid="email"
+                                        id="email"
+                                        name="email"
+                                        placeholder="exemplo@gmail.com"
+                                        type="text"
+                                        autoCapitalize="none"
+                                        autoComplete="none"
+                                        autoCorrect="off"
+                                        value={formData.email}
+                                        onChange={handleFormChange}
+                                    />
+                                </div>
+                                <div className="space-y-1">
+                                    <Label htmlFor="password">Senha</Label>
+                                    <Input
+                                        data-testid="password"
+                                        id="password"
+                                        name="password"
+                                        placeholder="p4ssw0rd!"
+                                        type="text"
+                                        autoCapitalize="none"
+                                        autoComplete="none"
+                                        autoCorrect="off"
+                                        value={formData.password}
+                                        onChange={handleFormChange}
+                                    />
+                                </div>
+                            </CardContent>
+                            <CardFooter>
+                                <Button disabled={isLoading}>
+                                    {" "}
+                                    {isLoading && <Loader2 className="animate-spin" />}
+                                    {!isLoading && "Criar conta"}
+                                </Button>
+                            </CardFooter>
+                        </Card>
+                    </TabsContent>
+                    <TabsContent value="password">
+                        <Card>
+                            <CardHeader>
+                                <CardTitle>Password</CardTitle>
+                                <CardDescription>Change your password here. After saving, you'll be logged out.</CardDescription>
+                            </CardHeader>
+                            <CardContent className="space-y-2">
+                                <div className="space-y-1">
+                                    <Label htmlFor="current">Current password</Label>
+                                    <Input id="current" type="password" />
+                                </div>
+                                <div className="space-y-1">
+                                    <Label htmlFor="new">New password</Label>
+                                    <Input id="new" type="password" />
+                                </div>
+                            </CardContent>
+                            <CardFooter>
+                                <Button>Save password</Button>
+                            </CardFooter>
+                        </Card>
+                    </TabsContent>
+                </Tabs>
             </form>
         </div>
     );
