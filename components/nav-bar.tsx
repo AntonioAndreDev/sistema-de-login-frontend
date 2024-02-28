@@ -1,13 +1,14 @@
-"use client";
 import { useSession } from "next-auth/react";
 import { ToggleTheme } from "@/components/toggle-theme";
 import { Button } from "@/components/ui/button";
 import { ShieldAlert, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 import { ChangeDomain } from "./change-domain";
+import { getServerSession } from "next-auth";
+import { auth as authOptions } from "@/lib/auth-config";
 
-const NavBar = () => {
-    const { data: session } = useSession();
+const NavBar = async () => {
+    const session = await getServerSession(authOptions);
 
     return (
         <header className="flex justify-between items-center px-24 py-2 sticky top-0 z-50 border-b bg-background/95 backdrop-blur ">
@@ -19,7 +20,9 @@ const NavBar = () => {
                     </h1>
                 </div>
             ) : (
-                <ShieldAlert className={`${!session && "text-red-500"}`} size={"32"} />
+                <div className="flex items-center gap-4">
+                    <ShieldAlert className={`${!session && "text-red-500"}`} size={"32"} />
+                </div>
             )}
             {session && (
                 <nav className="text-base flex gap-12">
@@ -37,11 +40,11 @@ const NavBar = () => {
             )}
             <div className="flex gap-4 items-baseline">
                 {!session ? (
-                    <Button variant={"default"} size={"lg"} className="font-semibold text-xl" asChild>
+                    <Button variant={"default"} className="font-semibold text-lg px-12" asChild>
                         <Link href={`/login`}>Entrar</Link>
                     </Button>
                 ) : (
-                    <Button variant={"destructive"} size={"lg"} className="font-semibold text-xl" asChild>
+                    <Button variant={"destructive"} className="font-semibold text-lg px-12" asChild>
                         <Link href={`/signout`}>Sair</Link>
                     </Button>
                 )}

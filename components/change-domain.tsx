@@ -23,7 +23,7 @@ export function ChangeDomain() {
     const { data } = useSession();
 
     const role = JSON.stringify(data?.user.role, null, 2);
-    const email = JSON.stringify(data?.user.email, null, 2).replace(/['"]/g, "");
+    const email = JSON.stringify(data?.user.email, null, 2)?.replace(/"/g, "");
 
     async function handleClick() {
         if (newDomain === "") {
@@ -64,7 +64,7 @@ export function ChangeDomain() {
                 <DialogHeader>
                     <DialogTitle>Alterar Domínio</DialogTitle>
                     <DialogDescription>
-                        Se você deseja ter as opções de administrador insira como domínio{" "}
+                        Se você deseja acessar a rota <span className="underline">/admin-only</span> insira o como novo domínio{" "}
                         <span className="underline">ADMINAAD.</span>
                     </DialogDescription>
                 </DialogHeader>
@@ -76,7 +76,7 @@ export function ChangeDomain() {
                         <Input
                             disabled={true}
                             id="dominioAtual"
-                            defaultValue={role.toUpperCase().replace(/['"]/g, "")}
+                            defaultValue={role?.toUpperCase()?.replace(/"/g, "")}
                             className="col-span-3"
                         />
                     </div>
