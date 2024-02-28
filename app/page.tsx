@@ -11,7 +11,7 @@ export default async function Home() {
 
     return (
         <div className="text-center text-6xl">
-            <span>Home</span>
+            <span>Server Authentication</span>
             {session && <div className="text-base">{JSON.stringify(session, null, 2)}</div>}
         </div>
     );
