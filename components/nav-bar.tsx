@@ -21,10 +21,10 @@ const NavBar = async () => {
             )}
             {session && (
                 <nav className="text-base flex gap-12">
-                    <Button asChild>
+                    <Button className="text-lg" asChild>
                         <Link href={"/"}>Auth - Server</Link>
                     </Button>
-                    <Button asChild>
+                    <Button className="text-lg" asChild>
                         <Link href={"auth-client"}>Auth - Client</Link>
                     </Button>
                 </nav>
