@@ -29,6 +29,9 @@ const NavBar = () => {
                     <Button className="text-lg" asChild>
                         <Link href={"auth-client"}>Auth - Client</Link>
                     </Button>
+                    <Button className="text-lg" asChild>
+                        <Link href={"/admin-only"}>Admin - Only</Link>
+                    </Button>
                     <ChangeDomain />
                 </nav>
             )}

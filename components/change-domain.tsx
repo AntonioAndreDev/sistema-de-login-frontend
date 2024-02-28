@@ -11,11 +11,14 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { set } from "date-fns";
+import { Loader2 } from "lucide-react";
 import { signOut, useSession } from "next-auth/react";
 import { useState } from "react";
 
 export function ChangeDomain() {
     const [newDomain, setNewDomain] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
 
     const { data } = useSession();
 
@@ -28,19 +31,26 @@ export function ChangeDomain() {
             return;
         }
 
-        const res = await fetch("api/domain", {
-            method: "POST",
-            body: JSON.stringify({
-                newDomain,
-                email,
-            }),
-        });
+        try {
+            setIsLoading(true);
+            const res = await fetch("api/domain", {
+                method: "POST",
+                body: JSON.stringify({
+                    newDomain,
+                    email,
+                }),
+            });
 
-        if (!res.ok) {
+            if (!res.ok) {
+                console.log("Erro ao alterar domínio");
+            }
+
+            signOut({ callbackUrl: "/" });
+        } catch (error) {
             console.log("Erro ao alterar domínio");
+        } finally {
+            setIsLoading(false);
         }
-
-        signOut({ callbackUrl: "/" });
     }
 
     return (
@@ -75,6 +85,7 @@ export function ChangeDomain() {
                             Novo
                         </Label>
                         <Input
+                            disabled={isLoading}
                             value={newDomain}
                             onChange={(ev) => setNewDomain(ev.target.value)}
                             id="dominioNovo"
@@ -88,8 +99,8 @@ export function ChangeDomain() {
                     </div>
                 </div>
                 <DialogFooter>
-                    <Button onClick={handleClick} type="submit">
-                        Save changes
+                    <Button disabled={isLoading} className="min-w-full flex gap-4" onClick={handleClick} type="submit">
+                        {isLoading && <Loader2 size={18} className="animate-spin" />} Salvar Mudança
                     </Button>
                 </DialogFooter>
             </DialogContent>
