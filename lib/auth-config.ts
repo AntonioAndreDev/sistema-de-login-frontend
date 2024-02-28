@@ -15,6 +15,7 @@ export const auth: NextAuthOptions = {
             credentials: {
                 email: { label: "email", type: "email", placeholder: "Giuliana" },
                 password: { label: "Password", type: "password" },
+                domain: { label: "Domain", type: "text" },
             },
             async authorize(credentials, req) {
                 try {
@@ -37,6 +38,7 @@ export const auth: NextAuthOptions = {
                         name: user.userExists.name,
                         password: user.userExists.password,
                         email: user.userExists.email,
+                        domain: user.userExists.domain,
                     };
 
                     return authorizedUser;
@@ -49,12 +51,24 @@ export const auth: NextAuthOptions = {
     ],
     callbacks: {
         jwt({ token, user }) {
-            console.log("token", token);
-
+            if (user) {
+                console.log("user", user);
+                token.id = user.id;
+                token.name = user.name;
+                token.email = user.email;
+                token.domain = user.domain;
+                if (user.domain === "ADMINAAD") {
+                    token.role = "admin";
+                } else {
+                    token.role = "user";
+                }
+            }
             return token;
         },
         session({ token, session }) {
             session.user.token = token.token;
+            session.user.domain = token.domain;
+            session.user.role = token.role;
 
             return session;
         },
