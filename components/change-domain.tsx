@@ -23,7 +23,7 @@ export function ChangeDomain() {
     const { data } = useSession();
 
     const role = JSON.stringify(data?.user.role, null, 2);
-    const email = JSON.stringify(data?.user.email, null, 2).replace(/['"]/g, "");
+    const email = JSON.stringify(data?.user.email, null, 2)?.replace(/"/g, "");
 
     async function handleClick() {
         if (newDomain === "") {
@@ -76,7 +76,7 @@ export function ChangeDomain() {
                         <Input
                             disabled={true}
                             id="dominioAtual"
-                            defaultValue={role.toUpperCase().replace(/['"]/g, "")}
+                            defaultValue={role?.toUpperCase()?.replace(/"/g, "")}
                             className="col-span-3"
                         />
                     </div>
