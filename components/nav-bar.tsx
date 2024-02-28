@@ -1,12 +1,15 @@
-import { getServerSession } from "next-auth";
-import { auth as authOptions } from "@/lib/auth-config";
+"use client";
+import { useSession } from "next-auth/react";
 import { ToggleTheme } from "@/components/toggle-theme";
 import { Button } from "@/components/ui/button";
 import { ShieldAlert, ShieldCheck } from "lucide-react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { ChangeDomain } from "./change-domain";
 
-const NavBar = async () => {
-    const session = await getServerSession(authOptions);
+const NavBar = () => {
+    const { data: session } = useSession();
+    const pathname = usePathname();
     return (
         <header className="flex justify-between items-center px-24 py-2 sticky top-0 z-50 border-b bg-background/95 backdrop-blur ">
             {session ? (
@@ -27,6 +30,7 @@ const NavBar = async () => {
                     <Button className="text-lg" asChild>
                         <Link href={"auth-client"}>Auth - Client</Link>
                     </Button>
+                    {session.user.role === "user" && pathname === "/unauthorized" && <ChangeDomain />}
                 </nav>
             )}
             <div className="flex gap-4 items-baseline">
