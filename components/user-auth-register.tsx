@@ -101,11 +101,6 @@ export default function UserAuthRegister({ className, ...props }: UserAuthFormPr
         <div>
             <form onSubmit={onSubmit}>
                 <Tabs defaultValue="register" className="w-[400px]">
-                    <TabsList className="w-full">
-                        <TabsTrigger className="w-full" value="register">
-                            Criar Conta
-                        </TabsTrigger>
-                    </TabsList>
                     <TabsContent value="register">
                         <Card>
                             <CardHeader>
