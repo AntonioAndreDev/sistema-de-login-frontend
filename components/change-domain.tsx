@@ -23,6 +23,11 @@ export function ChangeDomain() {
     const email = JSON.stringify(data?.user.email, null, 2).replace(/['"]/g, "");
 
     async function handleClick() {
+        if (newDomain === "") {
+            console.log("Campo vazio");
+            return;
+        }
+
         const res = await fetch("api/domain", {
             method: "POST",
             body: JSON.stringify({
@@ -77,8 +82,8 @@ export function ChangeDomain() {
                         />
                     </div>
                     <div className="items-center gap-4">
-                        <DialogDescription className="underline italic capitalize">
-                            é necessário fazer login novamente após as alterações!
+                        <DialogDescription className="underline italic">
+                            <strong>É necessário fazer login novamente após a alteração!</strong>
                         </DialogDescription>
                     </div>
                 </div>
