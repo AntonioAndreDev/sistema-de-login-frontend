@@ -18,6 +18,7 @@ interface IUser {
     name: string;
     password: string;
     email: string;
+    domain: string;
 }
 
 export default function UserAuthRegister({ className, ...props }: UserAuthFormProps) {
@@ -25,6 +26,7 @@ export default function UserAuthRegister({ className, ...props }: UserAuthFormPr
         name: "",
         password: "",
         email: "",
+        domain: "",
     });
     const [isLoading, setIsLoading] = useState(false);
     const { toast } = useToast();
@@ -85,6 +87,7 @@ export default function UserAuthRegister({ className, ...props }: UserAuthFormPr
             name: "",
             password: "",
             email: "",
+            domain: "",
         });
 
         setIsLoading(false);
@@ -159,6 +162,21 @@ export default function UserAuthRegister({ className, ...props }: UserAuthFormPr
                                         autoComplete="none"
                                         autoCorrect="off"
                                         value={formData.password}
+                                        onChange={handleFormChange}
+                                    />
+                                </div>
+                                <div className="space-y-1">
+                                    <Label htmlFor="domain">Domínio</Label>
+                                    <Input
+                                        data-testid="domain"
+                                        id="domain"
+                                        name="domain"
+                                        placeholder="p4ssw0rd!"
+                                        type="domain"
+                                        autoCapitalize="none"
+                                        autoComplete="none"
+                                        autoCorrect="off"
+                                        value={formData.domain}
                                         onChange={handleFormChange}
                                     />
                                 </div>

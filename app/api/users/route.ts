@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
     const data = await request.json();
-    const { name, password, email } = data;
+    const { name, password, email, domain } = data;
     console.log({ name, password, email });
 
     const res = await fetch("http://localhost:3333/users", {
@@ -11,6 +11,7 @@ export async function POST(request: NextRequest) {
             name,
             email,
             password,
+            domain,
         }),
         headers: {
             "Content-Type": "application/json",
