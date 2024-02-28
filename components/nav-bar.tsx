@@ -39,11 +39,11 @@ const NavBar = () => {
             )}
             <div className="flex gap-4 items-baseline">
                 {!session ? (
-                    <Button variant={"default"} size={"lg"} className="font-semibold text-xl" asChild>
+                    <Button variant={"default"} className="font-semibold text-lg px-12" asChild>
                         <Link href={`/login`}>Entrar</Link>
                     </Button>
                 ) : (
-                    <Button variant={"destructive"} size={"lg"} className="font-semibold text-xl" asChild>
+                    <Button variant={"destructive"} className="font-semibold text-lg px-12" asChild>
                         <Link href={`/signout`}>Sair</Link>
                     </Button>
                 )}
