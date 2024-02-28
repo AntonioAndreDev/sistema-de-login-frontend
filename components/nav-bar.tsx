@@ -15,9 +15,15 @@ const NavBar = async () => {
                 <ShieldAlert className={`${!session && "text-red-500"}`} size={"32"} />
             )}
             <div className="flex gap-4 items-baseline">
-                <Button variant={"default"} size={"lg"} className="font-semibold text-xl" asChild>
-                    <Link href={`/login`}>Login</Link>
-                </Button>
+                {!session ? (
+                    <Button variant={"default"} size={"lg"} className="font-semibold text-xl" asChild>
+                        <Link href={`/login`}>Entrar</Link>
+                    </Button>
+                ) : (
+                    <Button variant={"destructive"} size={"lg"} className="font-semibold text-xl" asChild>
+                        <Link href={`/signout`}>Sair</Link>
+                    </Button>
+                )}
 
                 <ToggleTheme />
             </div>
