@@ -46,7 +46,7 @@ export function ChangeDomain() {
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <Button className="text-lg" variant="default">
+                <Button className="text-lg" variant="destructive">
                     Alterar Domínio
                 </Button>
             </DialogTrigger>
