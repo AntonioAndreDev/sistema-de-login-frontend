@@ -141,7 +141,7 @@ export default function UserAuthRegister({ className, ...props }: UserAuthFormPr
                                         id="email"
                                         name="email"
                                         placeholder="exemplo@gmail.com"
-                                        type="text"
+                                        type="email"
                                         autoCapitalize="on"
                                         value={formData.email}
                                         onChange={handleFormChange}
