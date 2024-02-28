@@ -5,12 +5,14 @@ import { Button } from "@/components/ui/button";
 import { ShieldAlert, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 import { ChangeDomain } from "./change-domain";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const NavBar = () => {
     const { data: session } = useSession();
 
     return (
         <header className="flex justify-between items-center px-24 py-2 sticky top-0 z-50 border-b bg-background/95 backdrop-blur ">
+            {!session && <Skeleton className="w-full h-24" />}
             {session ? (
                 <div className="flex gap-4 items-center">
                     <ShieldCheck className={`${session && "text-emerald-500"}`} size={"32"} />
