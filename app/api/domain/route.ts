@@ -2,16 +2,13 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
     const data = await request.json();
-    const { name, password, email, domain } = data;
-    console.log({ name, password, email });
+    const { newDomain, email } = data;
+    console.log("POST DOMAIN", newDomain); // ADMINAAD
 
-    const res = await fetch("http://localhost:3333/users", {
-        method: "POST",
+    const res = await fetch(`http://localhost:3333/domain/${email}`, {
+        method: "PUT",
         body: JSON.stringify({
-            name,
-            email,
-            password,
-            domain,
+            newDomain,
         }),
         headers: {
             "Content-Type": "application/json",

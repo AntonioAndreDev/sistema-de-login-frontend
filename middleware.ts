@@ -8,6 +8,10 @@ export default withAuth(
             return NextResponse.redirect(new URL("/login", req.url));
         }
 
+        if (req.nextUrl.pathname === "/admin-only" && req.nextauth.token?.role !== "admin") {
+            return NextResponse.redirect(new URL("/unauthorized", req.url));
+        }
+
         if (!req.nextauth.token) {
             console.log("Redirecting to register page");
             return NextResponse.redirect(new URL("/register", req.url));
@@ -21,4 +25,4 @@ export default withAuth(
         },
     }
 );
-export const config = { matcher: ["/", "/auth-client", "/signout"] };
+export const config = { matcher: ["/", "/auth-client", "/signout", "/admin-only"] };
