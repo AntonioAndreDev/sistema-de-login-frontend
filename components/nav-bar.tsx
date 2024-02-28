@@ -10,9 +10,24 @@ const NavBar = async () => {
     return (
         <header className="flex justify-between items-center px-24 py-2 sticky top-0 z-50 border-b bg-background/95 backdrop-blur ">
             {session ? (
-                <ShieldCheck className={`${session && "text-emerald-500"}`} size={"32"} />
+                <div className="flex gap-4 items-center">
+                    <ShieldCheck className={`${session && "text-emerald-500"}`} size={"32"} />
+                    <h1 className="text-2xl">
+                        Olá, <span className="capitalize">{session.user.name}</span>!
+                    </h1>
+                </div>
             ) : (
                 <ShieldAlert className={`${!session && "text-red-500"}`} size={"32"} />
+            )}
+            {session && (
+                <nav className="text-base flex gap-12">
+                    <Button asChild>
+                        <Link href={"/"}>Auth - Server</Link>
+                    </Button>
+                    <Button asChild>
+                        <Link href={"auth-client"}>Auth - Client</Link>
+                    </Button>
+                </nav>
             )}
             <div className="flex gap-4 items-baseline">
                 {!session ? (
