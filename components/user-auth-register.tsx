@@ -122,12 +122,15 @@ export default function UserAuthRegister({ className, ...props }: UserAuthFormPr
                                         data-testid="name"
                                         id="name"
                                         name="name"
-                                        placeholder="Antônio André"
+                                        placeholder="Antonio Andre"
                                         type="text"
                                         autoCapitalize="none"
                                         autoComplete="none"
                                         autoCorrect="off"
-                                        value={formData.name}
+                                        value={formData.name
+                                            .normalize("NFD")
+                                            .replace(/[\u0300-\u036f]/g, "")
+                                            .replace(/\b\w/g, (char) => char.toUpperCase())}
                                         onChange={handleFormChange}
                                     />
                                 </div>
@@ -139,9 +142,7 @@ export default function UserAuthRegister({ className, ...props }: UserAuthFormPr
                                         name="email"
                                         placeholder="exemplo@gmail.com"
                                         type="text"
-                                        autoCapitalize="none"
-                                        autoComplete="none"
-                                        autoCorrect="off"
+                                        autoCapitalize="on"
                                         value={formData.email}
                                         onChange={handleFormChange}
                                     />
