@@ -154,7 +154,7 @@ export default function UserAuthRegister({ className, ...props }: UserAuthFormPr
                                         id="password"
                                         name="password"
                                         placeholder="p4ssw0rd!"
-                                        type="text"
+                                        type="password"
                                         autoCapitalize="none"
                                         autoComplete="none"
                                         autoCorrect="off"
