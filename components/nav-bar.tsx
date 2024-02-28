@@ -30,7 +30,7 @@ const NavBar = () => {
                     <Button className="text-lg" asChild>
                         <Link href={"auth-client"}>Auth - Client</Link>
                     </Button>
-                    {session.user.role === "user" && pathname === "/unauthorized" && <ChangeDomain />}
+                    <ChangeDomain />
                 </nav>
             )}
             <div className="flex gap-4 items-baseline">
