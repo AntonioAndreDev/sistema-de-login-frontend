@@ -24,8 +24,11 @@ export function ChangeDomain() {
 
     const role = JSON.stringify(data?.user.role, null, 2);
     const email = JSON.stringify(data?.user.email, null, 2)?.replace(/"/g, "");
+    const token = JSON.stringify(data?.user.token, null, 2)?.replace(/"/g, "");
 
     async function handleClick() {
+        console.log(data);
+
         if (newDomain === "") {
             console.log("Campo vazio");
             return;
@@ -38,6 +41,7 @@ export function ChangeDomain() {
                 body: JSON.stringify({
                     newDomain,
                     email,
+                    token,
                 }),
             });
 

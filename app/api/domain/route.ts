@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
     const data = await request.json();
-    const { newDomain, email } = data;
+    const { newDomain, email, token } = data;
     console.log("POST DOMAIN", newDomain); // ADMINAAD
 
     const res = await fetch(`http://localhost:3333/domain/${email}`, {
@@ -12,6 +12,7 @@ export async function POST(request: NextRequest) {
         }),
         headers: {
             "Content-Type": "application/json",
+            "x-access-token": token,
         },
     });
 
