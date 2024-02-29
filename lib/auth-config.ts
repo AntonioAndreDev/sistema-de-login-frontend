@@ -39,6 +39,7 @@ export const auth: NextAuthOptions = {
                         password: user.userExists.password,
                         email: user.userExists.email,
                         domain: user.userExists.domain,
+                        token: user.token,
                     };
 
                     return authorizedUser;
@@ -57,6 +58,7 @@ export const auth: NextAuthOptions = {
                 token.name = user.name;
                 token.email = user.email;
                 token.domain = user.domain;
+                token.token = user.token;
                 if (user.domain === "ADMINAAD") {
                     token.role = "admin";
                 } else {
@@ -69,6 +71,7 @@ export const auth: NextAuthOptions = {
             session.user.token = token.token;
             session.user.domain = token.domain;
             session.user.role = token.role;
+            session.user.token = token.token;
 
             return session;
         },
