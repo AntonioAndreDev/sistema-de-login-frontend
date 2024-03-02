@@ -53,9 +53,22 @@ export default function UserAuthRegister({ className, ...props }: UserAuthFormPr
       return;
     }
 
-    const res = await fetch("api/users", {
+    // const res = await fetch("api/users", {
+    //   method: "POST",
+    //   body: JSON.stringify(formData),
+    // });
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_REQUEST_URL}/users`, {
       method: "POST",
-      body: JSON.stringify(formData),
+      body: JSON.stringify({
+        name: formData.name,
+        email: formData.email,
+        password: formData.password,
+        domain: formData.domain,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
 
     if (!res.ok) {
