@@ -182,7 +182,7 @@ export default function UserAuthRegister({ className, ...props }: UserAuthFormPr
                     data-testid="domain"
                     id="domain"
                     name="domain"
-                    placeholder="p4ssw0rd!"
+                    placeholder="usuario-padrao"
                     type="domain"
                     autoCapitalize="none"
                     autoComplete="none"
