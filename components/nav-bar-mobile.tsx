@@ -14,7 +14,7 @@ export default function NavBarMobile() {
 
   return (
     <>
-      <div className="flex lg:hidden px-4 justify-between items-center">
+      <div className="flex lg:hidden px-4 justify-between items-center py-4">
         {session ? (
           <div className="flex gap-4 items-center">
             <ShieldCheck className={`${session && "text-emerald-500"}`} size={"32"} />
