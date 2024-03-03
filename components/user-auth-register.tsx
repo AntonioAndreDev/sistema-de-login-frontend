@@ -114,7 +114,7 @@ export default function UserAuthRegister({ className, ...props }: UserAuthFormPr
   }
 
   return (
-    <div>
+    <div className="mt-12">
       <form onSubmit={onSubmit}>
         <Tabs defaultValue="register" className="w-[400px]">
           <TabsContent value="register">
