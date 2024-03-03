@@ -146,6 +146,7 @@ export default function UserAuthRegister({ className, ...props }: UserAuthFormPr
                 <div className="space-y-1">
                   <Label htmlFor="name">Nome</Label>
                   <Input
+                    disabled={isLoading}
                     data-testid="name"
                     id="name"
                     name="name"
@@ -164,6 +165,7 @@ export default function UserAuthRegister({ className, ...props }: UserAuthFormPr
                 <div className="space-y-1">
                   <Label htmlFor="email">Email</Label>
                   <Input
+                    disabled={isLoading}
                     data-testid="email"
                     id="email"
                     name="email"
@@ -177,6 +179,7 @@ export default function UserAuthRegister({ className, ...props }: UserAuthFormPr
                 <div className="space-y-1">
                   <Label htmlFor="password">Senha</Label>
                   <Input
+                    disabled={isLoading}
                     data-testid="password"
                     id="password"
                     name="password"
@@ -192,6 +195,7 @@ export default function UserAuthRegister({ className, ...props }: UserAuthFormPr
                 <div className="space-y-1">
                   <Label htmlFor="confirmPassword">Confirmar Senha</Label>
                   <Input
+                    disabled={isLoading}
                     data-testid="confirmPassword"
                     id="confirmPassword"
                     name="confirmPassword"
@@ -207,6 +211,7 @@ export default function UserAuthRegister({ className, ...props }: UserAuthFormPr
                 <div className="space-y-1">
                   <Label htmlFor="domain">Domínio</Label>
                   <Input
+                    disabled={isLoading}
                     data-testid="domain"
                     id="domain"
                     name="domain"

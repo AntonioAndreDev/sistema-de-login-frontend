@@ -67,6 +67,7 @@ export default function UserAuthLogin({ className, ...props }: UserAuthFormProps
                 <div className="space-y-1">
                   <Label htmlFor="email">Email</Label>
                   <Input
+                    disabled={isDisabled}
                     data-testid="email"
                     id="email"
                     name="email"
@@ -82,6 +83,7 @@ export default function UserAuthLogin({ className, ...props }: UserAuthFormProps
                 <div className="space-y-1">
                   <Label htmlFor="password">Senha</Label>
                   <Input
+                    disabled={isDisabled}
                     data-testid="password"
                     id="password"
                     name="password"
