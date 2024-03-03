@@ -19,12 +19,14 @@ interface IUser {
   password: string;
   email: string;
   domain: string;
+  confirmPassword: string;
 }
 
 export default function UserAuthRegister({ className, ...props }: UserAuthFormProps) {
   const [formData, setFormData] = useState<IUser>({
     name: "",
     password: "",
+    confirmPassword: "",
     email: "",
     domain: "",
   });
@@ -43,7 +45,7 @@ export default function UserAuthRegister({ className, ...props }: UserAuthFormPr
     setIsLoading(true);
 
     // Validate form data
-    if (!formData.email || !formData.name || !formData.password) {
+    if (!formData.email || !formData.name || !formData.password || !formData.confirmPassword) {
       setIsLoading(false);
       toast({
         title: "Preencha todos os campos!",
@@ -53,9 +55,32 @@ export default function UserAuthRegister({ className, ...props }: UserAuthFormPr
       return;
     }
 
-    const res = await fetch("api/users", {
+    if (formData.password !== formData.confirmPassword) {
+      setIsLoading(false);
+      toast({
+        title: "Senhas não coincidem!",
+        variant: "destructive",
+        description: "As senhas não coincidem, tente novamente.",
+      });
+      return;
+    }
+
+    // const res = await fetch("api/users", {
+    //   method: "POST",
+    //   body: JSON.stringify(formData),
+    // });
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_REQUEST_URL}/users`, {
       method: "POST",
-      body: JSON.stringify(formData),
+      body: JSON.stringify({
+        name: formData.name,
+        email: formData.email,
+        password: formData.password,
+        domain: formData.domain,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
 
     if (!res.ok) {
@@ -86,6 +111,7 @@ export default function UserAuthRegister({ className, ...props }: UserAuthFormPr
     setFormData({
       name: "",
       password: "",
+      confirmPassword: "",
       email: "",
       domain: "",
     });
@@ -101,7 +127,7 @@ export default function UserAuthRegister({ className, ...props }: UserAuthFormPr
   }
 
   return (
-    <div>
+    <div className="mt-12">
       <form onSubmit={onSubmit}>
         <Tabs defaultValue="register" className="w-[400px]">
           <TabsContent value="register">
@@ -164,12 +190,27 @@ export default function UserAuthRegister({ className, ...props }: UserAuthFormPr
                   />
                 </div>
                 <div className="space-y-1">
+                  <Label htmlFor="confirmPassword">Confirmar Senha</Label>
+                  <Input
+                    data-testid="confirmPassword"
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    placeholder="p4ssw0rd!"
+                    type="password"
+                    autoCapitalize="none"
+                    autoComplete="none"
+                    autoCorrect="off"
+                    value={formData.confirmPassword}
+                    onChange={handleFormChange}
+                  />
+                </div>
+                <div className="space-y-1">
                   <Label htmlFor="domain">Domínio</Label>
                   <Input
                     data-testid="domain"
                     id="domain"
                     name="domain"
-                    placeholder="p4ssw0rd!"
+                    placeholder="usuario-padrao"
                     type="domain"
                     autoCapitalize="none"
                     autoComplete="none"
