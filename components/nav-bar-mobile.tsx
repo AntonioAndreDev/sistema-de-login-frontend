@@ -33,24 +33,32 @@ export default function NavBarMobile() {
       {isOpen && session && (
         <aside className="flex justify-center mt-4 lg:hidden px-4">
           <nav className="flex gap-4 flex-wrap justify-center">
-            <Button className="text-base" asChild>
+            <Button onClick={() => setIsOpen(false)} className="text-base" asChild>
               <Link href={"/"}>Auth - Server</Link>
             </Button>
             <Button className="text-base" asChild>
-              <Link href={"auth-client"}>Auth - Client</Link>
+              <Link onClick={() => setIsOpen(false)} href={"auth-client"}>
+                Auth - Client
+              </Link>
             </Button>
             <Button className="text-base" asChild>
-              <Link href={"/admin-only"}>Admin - Only</Link>
+              <Link onClick={() => setIsOpen(false)} href={"/admin-only"}>
+                Admin - Only
+              </Link>
             </Button>
             <ChangeDomain />
             <div className="flex gap-4">
               {!session ? (
                 <Button variant={"default"} className="font-semibold text-base px-6" asChild>
-                  <Link href={`/login`}>Entrar</Link>
+                  <Link onClick={() => setIsOpen(false)} href={`/login`}>
+                    Entrar
+                  </Link>
                 </Button>
               ) : (
                 <Button variant={"destructive"} className="font-semibold text-base px-6" asChild>
-                  <Link href={`/signout`}>Sair</Link>
+                  <Link onClick={() => setIsOpen(false)} href={`/signout`}>
+                    Sair
+                  </Link>
                 </Button>
               )}
               <ToggleTheme />
