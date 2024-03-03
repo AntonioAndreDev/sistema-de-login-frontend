@@ -19,12 +19,14 @@ interface IUser {
   password: string;
   email: string;
   domain: string;
+  confirmPassword: string;
 }
 
 export default function UserAuthRegister({ className, ...props }: UserAuthFormProps) {
   const [formData, setFormData] = useState<IUser>({
     name: "",
     password: "",
+    confirmPassword: "",
     email: "",
     domain: "",
   });
@@ -43,12 +45,22 @@ export default function UserAuthRegister({ className, ...props }: UserAuthFormPr
     setIsLoading(true);
 
     // Validate form data
-    if (!formData.email || !formData.name || !formData.password) {
+    if (!formData.email || !formData.name || !formData.password || !formData.confirmPassword) {
       setIsLoading(false);
       toast({
         title: "Preencha todos os campos!",
         variant: "destructive",
         description: "Preencha todos os campos para continuar.",
+      });
+      return;
+    }
+
+    if (formData.password !== formData.confirmPassword) {
+      setIsLoading(false);
+      toast({
+        title: "Senhas não coincidem!",
+        variant: "destructive",
+        description: "As senhas não coincidem, tente novamente.",
       });
       return;
     }
@@ -99,6 +111,7 @@ export default function UserAuthRegister({ className, ...props }: UserAuthFormPr
     setFormData({
       name: "",
       password: "",
+      confirmPassword: "",
       email: "",
       domain: "",
     });
@@ -173,6 +186,21 @@ export default function UserAuthRegister({ className, ...props }: UserAuthFormPr
                     autoComplete="none"
                     autoCorrect="off"
                     value={formData.password}
+                    onChange={handleFormChange}
+                  />
+                </div>
+                <div className="space-y-1">
+                  <Label htmlFor="confirmPassword">Confirmar Senha</Label>
+                  <Input
+                    data-testid="confirmPassword"
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    placeholder="p4ssw0rd!"
+                    type="password"
+                    autoCapitalize="none"
+                    autoComplete="none"
+                    autoCorrect="off"
+                    value={formData.confirmPassword}
                     onChange={handleFormChange}
                   />
                 </div>
