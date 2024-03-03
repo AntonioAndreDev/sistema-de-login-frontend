@@ -11,7 +11,10 @@ export default async function UnauthorizedPage() {
 
   return (
     <div className="text-center text-6xl grid h-[80vh] place-content-center">
-      <span>You are not authorized!</span>
+      <span className="text-2xl font-bold">Você não está autorizado!</span>
+      <p className="text-base">
+        Para ter acesso à essa rota altere seu domínio para <span className="italic underline">ADMINAAD</span>
+      </p>
     </div>
   );
 }
