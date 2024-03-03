@@ -3,15 +3,15 @@ import { auth as authOptions } from "@/lib/auth-config";
 import { redirect } from "next/navigation";
 
 export default async function UnauthorizedPage() {
-    const session = await getServerSession(authOptions);
+  const session = await getServerSession(authOptions);
 
-    if (session?.user.role === "admin") {
-        return redirect("/admin-only");
-    }
+  if (session?.user.role === "admin") {
+    return redirect("/admin-only");
+  }
 
-    return (
-        <div className="text-center text-6xl">
-            <span>You are not authorized!</span>
-        </div>
-    );
+  return (
+    <div className="text-center text-6xl grid h-[80vh] place-content-center">
+      <span>You are not authorized!</span>
+    </div>
+  );
 }

@@ -10,8 +10,8 @@ export default async function SignOut() {
   }
 
   return (
-    <div className="flex-col gap-2  grid h-[80vh] place-content-center">
-      <h1 className="text-3xl font-bold">Realmente deseja sair da sua conta?</h1>
+    <div className="flex-col gap-2 px-4 grid h-[80vh] place-content-center">
+      <h1 className="text-2xl text-center font-bold">Realmente deseja sair da sua conta?</h1>
       <UserAuthSignout />
     </div>
   );

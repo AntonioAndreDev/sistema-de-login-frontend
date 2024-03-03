@@ -129,7 +129,7 @@ export default function UserAuthRegister({ className, ...props }: UserAuthFormPr
   return (
     <div className="mt-12">
       <form onSubmit={onSubmit}>
-        <Tabs defaultValue="register" className="w-[400px]">
+        <Tabs defaultValue="register" className="w-full px-4 lg:w-[400px] mx-auto">
           <TabsContent value="register">
             <Card>
               <CardHeader>
