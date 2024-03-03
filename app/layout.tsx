@@ -15,7 +15,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Toaster />
             <NextTopLoader />
             <NavBar />
-            <main className="grid place-content-center">{children}</main>
+            <main>{children}</main>
             <Footer />
           </AuthProvider>
         </ThemeProvider>

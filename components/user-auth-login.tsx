@@ -50,7 +50,7 @@ export default function UserAuthLogin({ className, ...props }: UserAuthFormProps
   return (
     <div className="mt-12">
       <form onSubmit={onSubmit}>
-        <Tabs defaultValue="login" className="w-[400px]">
+        <Tabs defaultValue="login" className="w-full px-4 lg:w-[400px] mx-auto">
           <TabsContent value="login">
             <Card>
               <CardHeader>
