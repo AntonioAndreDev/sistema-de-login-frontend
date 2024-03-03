@@ -1,13 +1,14 @@
 import { getServerSession } from "next-auth";
 import { auth as authOptions } from "@/lib/auth-config";
-import { redirect } from "next/navigation";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Home - Sistema de Autenticação e Autorização",
+  description: "Um sistema de autenticação e autorização com NextAuth.js e Next.js, feito por Antônio André",
+};
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
-
-  // if (!session) {
-  //     return redirect("/login");
-  // }
 
   return (
     <div className="text-center grid h-[80vh] place-content-center w-full">

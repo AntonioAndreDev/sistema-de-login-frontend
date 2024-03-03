@@ -6,18 +6,18 @@ import UserAuthLogin from "@/components/user-auth-login";
 import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
-    title: "Authentication",
-    description: "Authentication forms built using the components.",
+  title: "Entrar - Sistema de Autenticação e Autorização",
+  description: "Um sistema de autenticação e autorização com NextAuth.js e Next.js, feito por Antônio André",
 };
 
 export default async function AuthenticationPage() {
-    const session = await getServerSession(authOptions);
-    if (session) {
-        return redirect("/");
-    }
-    return (
-        <>
-            <UserAuthLogin />
-        </>
-    );
+  const session = await getServerSession(authOptions);
+  if (session) {
+    return redirect("/");
+  }
+  return (
+    <>
+      <UserAuthLogin />
+    </>
+  );
 }
