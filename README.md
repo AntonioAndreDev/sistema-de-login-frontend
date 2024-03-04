@@ -16,7 +16,7 @@
   </li>
 </ul>
 
-## Sobre o Projeto
+## Sobre o Sistema
 
 <p>A aplicação possui um sistema bem estruturado, intuítivo e explicativo de como funcionam as lógicas de Autenticação e Autorização. De qualquer forma, aqui você pode encontrar um exemplo simples de uso da aplicação.</p>
 <ol>
@@ -63,4 +63,83 @@ Senha:* User123@
 ```
   </li>
 </ol>
+
+## Features
+
+<ul>
+  <li>
+    <strong>Registro de Contas</strong>
+  </li>
+  <li>
+    <strong>Autenticação de Contas</strong>
+  </li>
+  <li>
+    <strong>Autorização de Contas</strong>
+  </li>
+</ul>
+
+## Tecnologias Utilizadas
+<table>
+  <thead>
+    <tr>
+      <th>Tecnologia</th>
+      <th>Função</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Bcrypt</td>
+      <td>Biblioteca para criptografia de senhas</td>
+    </tr>
+    <tr>
+      <td>Nextjs</td>
+      <td>Framework React para renderização do lado do servidor e do lado do cliente</td>
+    </tr>
+    <tr>
+      <td>Sequelize</td>
+      <td>ORM (Object-Relational Mapping) para Node.js, facilitando a interação com bancos de dados relacionais</td>
+    </tr>
+    <tr>
+      <td>Node</td>
+      <td>Plataforma de execução de código JavaScript do lado do servidor</td>
+    </tr>
+    <tr>
+      <td>Postgresql</td>
+      <td>Sistema de gerenciamento de banco de dados relacional</td>
+    </tr>
+    <tr>
+      <td>Tailwind css</td>
+      <td>Biblioteca de classes utilitárias para estilização de interfaces</td>
+    </tr>
+    <tr>
+      <td>Tailwind UI</td>
+      <td>Conjunto de componentes pré-projetados construídos com Tailwind CSS</td>
+    </tr>
+    <tr>
+      <td>Shadcn UI</td>
+      <td>Uma coleção de componentes reutilizáveis e editáveis</td>
+    </tr>
+    <tr>
+      <td>Sonner</td>
+      <td>Uma biblioteca que fornece feedbacks ao usuário por meio de toast</td>
+    </tr>
+    <tr>
+      <td>Zod</td>
+      <td>Biblioteca para validação de esquemas em TypeScript</td>
+    </tr>
+    <tr>
+      <td>Express</td>
+      <td>Framework web rápido, flexível e minimalista para Node.js</td>
+    </tr>
+    <tr>
+      <td>Cors</td>
+      <td>Middleware para Express.js que permite controlar o acesso a recursos de diferentes origens</td>
+    </tr>
+    <tr>
+      <td>Nodemon</td>
+      <td>Utilitário que monitora alterações no código fonte e reinicia automaticamente o servidor Node.js</td>
+    </tr>
+  </tbody>
+</table>
+
 
