@@ -142,4 +142,10 @@ Senha:* User123@
   </tbody>
 </table>
 
+## Informações Adicionais
+<ul>
+  <li>
+    <strong>Todos os usuários cadastrados serão excluídos após 1 semana desde a criação de sua conta.</strong>
+  </li>
+</ul>
 
