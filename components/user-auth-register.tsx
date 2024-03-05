@@ -87,6 +87,16 @@ export default function UserAuthRegister({ className, ...props }: UserAuthFormPr
       const errorData = await res.json();
       console.log(errorData.error);
 
+      if (errorData.error === "Senha fraca!") {
+        setIsLoading(false);
+        toast({
+          title: "Senha fraca!",
+          variant: "destructive",
+          description: "A senha deve conter no mínimo 8 caracteres, 1 letra maiúscula, 1 minúscula e 1 número.",
+        });
+        return;
+      }
+
       if (errorData.error === "Usuário já possui email cadastrado!") {
         setIsLoading(false);
         toast({
