@@ -1,9 +1,9 @@
-## O Surgimento da Ideia
+## 💡 O Surgimento da Ideia
 
 <p>Esse projeto surgiu com o objetivo principal de posibilitar que eu pudesse treinar e desenvolver minha habilidades em desenvolvimento Frontend, e principalmente minhas habilidades em desenvolvimento Backend.</p>
 <p>Partindo desse princípio, a minha vontade era de desenvolver algo que eu pudesse criar e validar e, então, surge a ideia de criar uma aplicação de sistema de login. Com um longo tempo de estudo conheci dois conceitos que são os alicerces desse projeto: <strong>Autenticação</strong> e <strong>Autorização</strong>.</p>
 
-## Os Alicerces do Projeto
+## 🏢 Os Alicerces do Projeto
 
 <p>A aplicação "Sistema de Login" tem como fundamento dois conceitos primordiais, são eles:</p>
 <ul>
@@ -16,7 +16,7 @@
   </li>
 </ul>
 
-## Sobre o Sistema
+## 👨‍💻 Sobre o Sistema
 
 <p>A aplicação possui um sistema bem estruturado, intuítivo e explicativo de como funcionam as lógicas de Autenticação e Autorização. De qualquer forma, aqui você pode encontrar um exemplo simples de uso da aplicação.</p>
 <ol>
@@ -64,7 +64,7 @@ Senha:* User123@
   </li>
 </ol>
 
-## A Segurança do Projeto
+## ⛓ A Segurança do Projeto
 <ul>
   <li>
     <strong>Todas</strong> as senhas são salvas em formato de hash, isto é, todo dado sensível é encriptografado.
@@ -77,7 +77,7 @@ Senha:* User123@
   </li>
 </ul>
 
-## Features
+## 🆙 Features
 
 <ul>
   <li>
@@ -91,7 +91,7 @@ Senha:* User123@
   </li>
 </ul>
 
-## Tecnologias Utilizadas
+## 🟡 Tecnologias Utilizadas
 <table>
   <thead>
     <tr>
@@ -155,7 +155,7 @@ Senha:* User123@
   </tbody>
 </table>
 
-## Informações Adicionais
+## ➕ Informações Adicionais
 <ul>
   <li>
     <strong>Todos os usuários cadastrados serão excluídos uma vez por semana.</strong>
