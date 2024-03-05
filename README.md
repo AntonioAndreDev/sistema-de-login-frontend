@@ -64,6 +64,19 @@ Senha:* User123@
   </li>
 </ol>
 
+## A Segurança do Projeto
+<ul>
+  <li>
+    <strong>Todas</strong> as senhas são salvas em formato de hash, isto é, todo dado sensível é encriptografado.
+  </li>
+  <li>
+    Se um usuário <strong>não está logado ou não possui uma conta</strong>, ele não terá acesso às rotas: <strong><i>/</i></strong>, <strong><i>/auth-client</i></strong> e <strong><i>/sign-out</i></strong>
+  </li>
+  <li>
+    Se um usuário <strong>possui uma conta e está logado</strong>, ele não terá acesso às rotas: <strong><i>/login</i></strong> e <strong><i>/register</i></strong>.
+  </li>
+</ul>
+
 ## Features
 
 <ul>
@@ -145,7 +158,7 @@ Senha:* User123@
 ## Informações Adicionais
 <ul>
   <li>
-    <strong>Todos os usuários cadastrados serão excluídos em cada segunda-feira da semana.</strong>
+    <strong>Todos os usuários cadastrados serão excluídos uma vez por semana.</strong>
   </li>
 </ul>
 
