@@ -145,7 +145,7 @@ Senha:* User123@
 ## Informações Adicionais
 <ul>
   <li>
-    <strong>Todos os usuários cadastrados serão excluídos após 1 semana desde a criação de sua conta.</strong>
+    <strong>Todos os usuários cadastrados serão excluídos em cada segunda-feira da semana.</strong>
   </li>
 </ul>
 
