@@ -158,6 +158,10 @@ Senha:* User123@
       <td>Nodemon</td>
       <td>Utilitário que monitora alterações no código fonte e reinicia automaticamente o servidor Node.js</td>
     </tr>
+    <tr>
+      <td>UUIDv4</td>
+      <td>Biblioteca responsável por criar um Identificador Único Universal</td>
+    </tr>
   </tbody>
 </table>
 
