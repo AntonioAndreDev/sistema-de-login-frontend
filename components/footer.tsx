@@ -9,6 +9,14 @@ export default function Footer() {
           </a>
         </span>
       </h1>
+      <a
+        href="https://github.com/AntonioAndreDev/sistema-de-login-frontend"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="italic underline cursor-pointer text-sm font-normal"
+      >
+        Confira a documentação do projeto
+      </a>
     </footer>
   );
 }
